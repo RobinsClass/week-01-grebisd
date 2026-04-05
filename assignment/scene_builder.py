@@ -79,7 +79,6 @@ building = cmds.polyCube(
 cmds.move(building_x, building_height / 2.0, building_z, building)
 
 # ---------------------------------------------------------------------------
-# TODO: Add Object 2
 # Object two is a cylinder and cone to be a skyscraper with an antenna at the top.
 # ---------------------------------------------------------------------------
 
@@ -113,8 +112,8 @@ antenna = cmds.polyCone(
 #the appropriate location.
 antenna_y = skyscraper_height + antenna_height * 0.5
 cmds.move(skyscraper_x, antenna_y, skyscraper_z, antenna)
+
 # ---------------------------------------------------------------------------
-# TODO: Add Object 3
 #Object 3 is just another building, a midsized one.
 # ---------------------------------------------------------------------------
 
@@ -137,8 +136,6 @@ building = cmds.polyCube(
 cmds.move(building_x, building_height / 2.0, building_z, building)
 
 # ---------------------------------------------------------------------------
-# TODO: Add Object 4
-# ---------------------------------------------------------------------------
 #Object 4 is just another building, a taller one.
 # ---------------------------------------------------------------------------
 
@@ -160,8 +157,6 @@ building = cmds.polyCube(
 #This moves my building so that it sits on the ground plane.
 cmds.move(building_x, building_height / 2.0, building_z, building)
 
-# ---------------------------------------------------------------------------
-# TODO: Add Object 5
 # ---------------------------------------------------------------------------
 #Object 5 is a house with a roof.
 # ---------------------------------------------------------------------------
@@ -197,12 +192,6 @@ roof = cmds.polyCone(
 #the appropriate location.
 roof_y = house_height + roof_height * 0.5
 cmds.move(house_x, roof_y, house_z, roof)
-
-# ---------------------------------------------------------------------------
-# TODO (Optional): Add more objects to make your scene more interesting!
-# Consider: trees, lamp posts, fences, vehicles, animals, etc.
-# ---------------------------------------------------------------------------
-
 
 # ---------------------------------------------------------------------------
 # Frame All -- so the whole scene is visible in the viewport.
