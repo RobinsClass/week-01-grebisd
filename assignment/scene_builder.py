@@ -32,6 +32,7 @@ TIPS:
     - Use maya.cmds.scale(x, y, z, objectName) to resize objects.
     - Use maya.cmds.rename(oldName, newName) to give objects meaningful names.
 """
+#from os import name
 
 import maya.cmds as cmds
 
@@ -79,28 +80,123 @@ cmds.move(building_x, building_height / 2.0, building_z, building)
 
 # ---------------------------------------------------------------------------
 # TODO: Add Object 2
-# Create a second object using a DIFFERENT primitive type than the cube above.
-# Remember to:
-#   - Use descriptive variable names for size and position.
-#   - Name the object meaningfully with the 'name' parameter or cmds.rename().
-#   - Position it so it sits on the ground (not floating or buried).
+# Object two is a cylinder and cone to be a skyscraper with an antenna at the top.
 # ---------------------------------------------------------------------------
 
+# These are my descriptive variables that establish the skyscrapers dimensions and location as well as
+# the antennas dimensions.
+skyscraper_radius = 3
+skyscraper_height = 15
+skyscraper_x = 11
+skyscraper_z = -12
+antenna_radius = 1
+antenna_height = 10
 
+#These create the actual geometry and make its values my established variables.
+skyscraper = cmds.polyCylinder(
+    name="skyscraper",
+    radius=skyscraper_radius,
+    height=skyscraper_height,
+)[0]
+
+#This moves my skyscraper so it isn't clipping through the floor and is sitting on the ground.
+cmds.move(skyscraper_x, skyscraper_height / 2.0, skyscraper_z, skyscraper)
+
+#These create the actual geometry and make its values my established variables.
+antenna = cmds.polyCone(
+    name="antenna",
+    radius=antenna_radius,
+    height=antenna_height,
+)[0]
+
+#This makes my antennas y value the appropriate value to sit flush atop my skyscraper and moves it to
+#the appropriate location.
+antenna_y = skyscraper_height + antenna_height * 0.5
+cmds.move(skyscraper_x, antenna_y, skyscraper_z, antenna)
 # ---------------------------------------------------------------------------
 # TODO: Add Object 3
+#Object 3 is just another building, a midsized one.
 # ---------------------------------------------------------------------------
 
+# These are my descriptive variables that establish everything's dimensions and locations.
+building_width = 4
+building_height = 8
+building_depth = 5
+building_x = -8
+building_z = -1
+
+#These create the actual geometry and make its values my established variables.
+building = cmds.polyCube(
+    name="building_02",
+    width=building_width,
+    height=building_height,
+    depth=building_depth,
+)[0]
+
+#This moves my building so that it sits on the ground plane.
+cmds.move(building_x, building_height / 2.0, building_z, building)
 
 # ---------------------------------------------------------------------------
 # TODO: Add Object 4
 # ---------------------------------------------------------------------------
+#Object 4 is just another building, a taller one.
+# ---------------------------------------------------------------------------
 
+# These are my descriptive variables that establish everything's dimensions and locations.
+building_width = 5
+building_height = 10
+building_depth = 5
+building_x = -8
+building_z = -8
+
+#These create the actual geometry and assign its values as my established variables.
+building = cmds.polyCube(
+    name="building_03",
+    width=building_width,
+    height=building_height,
+    depth=building_depth,
+)[0]
+
+#This moves my building so that it sits on the ground plane.
+cmds.move(building_x, building_height / 2.0, building_z, building)
 
 # ---------------------------------------------------------------------------
 # TODO: Add Object 5
 # ---------------------------------------------------------------------------
+#Object 5 is a house with a roof.
+# ---------------------------------------------------------------------------
 
+# These are my descriptive variables that establish everything's dimensions and locations.
+house_width = 6
+house_height = 6
+house_depth = 6
+house_x = 18
+house_z = 12
+roof_height = 5
+roof_radius = 4.5
+
+#These create the actual geometry and assign its values as my established variables.
+house = cmds.polyCube(
+    name="house_01",
+    width=house_width,
+    height=house_height,
+    depth=house_depth,
+)[0]
+
+#This moves my building so that it sits on the ground plane.
+cmds.move(house_x, house_height / 2.0, house_z, house)
+
+#These create the actual geometry and assign its values as my established variables.
+roof = cmds.polyCone(
+    name="roof_01",
+    radius=roof_radius,
+    height=roof_height,
+)[0]
+
+#This makes my roofs y value the appropriate value to sit flush atop my house and moves it to
+#the appropriate location.
+roof_y = house_height + roof_height * 0.5
+cmds.move(house_x, roof_y, house_z, roof)
 
 # ---------------------------------------------------------------------------
 # TODO (Optional): Add more objects to make your scene more interesting!
